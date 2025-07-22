@@ -14,4 +14,5 @@ export type Author = {
   firstName: string;
   lastName: string;
   nationality: string;
+  image : string;
 };

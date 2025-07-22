@@ -1,27 +1,32 @@
 import { useState } from "react";
-
-import { Avatar, Button, Card, Flex, Grid } from "antd";
+import type { SearchTerm } from "./search-term";
+import {
+  Avatar,
+  Button,
+  Card,
+  ConfigProvider,
+  Flex,
+  Grid,
+  Input,
+  theme,
+} from "antd";
 import type { Book } from "./book";
 import { defaultBooks } from "./data";
+import { Books } from "./books";
+import { SearchQuery } from "./search-query";
 
-export function MainPage() {
+export function Program() {
   const [books, setBooks] = useState<Book[]>(defaultBooks);
+  const [query, setQuery] = useState<SearchTerm>({
+    name: "",
+    genre: "",
+  });
 
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 12 }}>
-      {books.map((book) => {
-        return (
-          <Card
-            cover={<img alt="example" src={book.cover} />}
-          >
-            <Card.Meta
-              avatar={<Avatar src={book.cover} />}
-              title={book.title}
-              description={book.author.firstName + " " + book.author.lastName}
-            />
-          </Card>
-        );
-      })}
-    </div>
+    <>
+      <SearchQuery query={query} onChange={setQuery} />{" "}
+      {/* ✅ Stable component */}
+      <Books query={query} books={books} />
+    </>
   );
 }

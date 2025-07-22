@@ -1,14 +1,10 @@
-import { StrictMode } from "react";
+import "./index.css";
 import { createRoot } from "react-dom/client";
 
-import { MainPage } from "./App.tsx";
-import {
-  createBrowserRouter,
-  Link,
-  Outlet,
-  RouterProvider,
-} from "react-router";
-import { BookOutlined } from "@ant-design/icons";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
+
+import { Program } from "./app.tsx";
+import { ConfigProvider, theme } from "antd";
 
 const router = createBrowserRouter([
   {
@@ -17,15 +13,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <MainPage />,
+        element: <Program   />,
       },
       {
-        path: "/home",
-        element: <div>Home</div>,
+        path: "/view",
+        element: <div>View</div>,
       },
       {
-        path: "/house",
-        element: <div>house</div>,
+        path: "/read",
+        element: <div>Read</div>,
       },
     ],
   },
@@ -33,13 +29,16 @@ const router = createBrowserRouter([
 
 function Layout() {
   return (
-    <div>
-      {/* <Link to={"/"}>Go to /</Link>
-      <Link to={"/home"}>Go to /home</Link>
-      <Link to={"/house"}>Go to /house</Link> */}
-      <BookOutlined />
-      <Outlet />
-    </div>
+    <>
+      
+        <div className="bg-neutral-700 w-screen h-screen">
+          <div className="p-12">
+            
+            <Outlet />
+          </div>
+        </div>
+      
+    </>
   );
 }
 
