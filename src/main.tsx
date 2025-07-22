@@ -1,10 +1,20 @@
 import "./index.css";
 import { createRoot } from "react-dom/client";
 
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router";
+import {
+  createBrowserRouter,
+  Outlet,
+  Router,
+  RouterProvider,
+} from "react-router";
 
 import { Program } from "./app.tsx";
 import { ConfigProvider, theme } from "antd";
+import { BookView } from "./book-view.tsx";
+
+// address = 'localhost:3000/a/1'
+// "/a/:x1" => <A />
+// "/b/:x2" => <B />
 
 const router = createBrowserRouter([
   {
@@ -13,11 +23,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Program   />,
+        element: <Program />,
       },
       {
-        path: "/view",
-        element: <div>View</div>,
+        path: "/book/:bookId",
+        element: <BookView />,
       },
       {
         path: "/read",
@@ -30,14 +40,11 @@ const router = createBrowserRouter([
 function Layout() {
   return (
     <>
-      
-        <div className="bg-neutral-700 w-screen h-screen">
-          <div className="p-12">
-            
-            <Outlet />
-          </div>
+      <div className="bg-neutral-700 w-screen h-screen">
+        <div className="p-12">
+          <Outlet />
         </div>
-      
+      </div>
     </>
   );
 }

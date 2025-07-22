@@ -1,6 +1,7 @@
 import { Avatar, Card, ConfigProvider, theme } from "antd";
 import type { SearchTerm } from "./search-term";
 import type { Book } from "./book";
+import { useNavigate } from "react-router";
 
 type BookProps = {
   query: SearchTerm;
@@ -8,6 +9,8 @@ type BookProps = {
 };
 
 export function Books(props: BookProps) {
+  const navigate = useNavigate();
+
   return (
     <ConfigProvider
       theme={{
@@ -30,7 +33,8 @@ export function Books(props: BookProps) {
           .map((book) => {
             return (
               <Card
-                style={{ width: 220, height: 200 }}
+                onClick={() => navigate(`/book/${book.id}`)}
+                style={{ width: 220, height: 200, cursor: "pointer" }}
                 cover={
                   <img
                     src={book.cover}
