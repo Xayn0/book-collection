@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { SearchTerm } from "./search-term";
 import {
   Avatar,
@@ -10,54 +10,31 @@ import {
   Input,
   theme,
 } from "antd";
-import type { Book } from "./book";
 import { Books } from "./books";
 import { SearchQuery } from "./search-query";
+import { useBooks } from "./use-books";
 
 export function Program() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [books, setBooks] = useState<Book[]>([]);
-  const [error, setError] = useState("");
+  const { books, error, isLoading, refetch } = useBooks();
   const [query, setQuery] = useState<SearchTerm>({
     name: "",
     genre: "",
   });
 
-  function loadBooks() {
-    setIsLoading(true);
-    fetch("http://localhost:3000/books")
-      .then((res) => res.json())
-      .then((books) => {
-        setBooks(books);
-        setError("");
-      })
-      .catch((e) => setError("Some error"))
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }
+  if (isLoading) return <div>Loading</div>;
 
-  useEffect(() => {
-    loadBooks();
-  }, []);
+  if (error)
+    return (
+      <>
+        <div className="bg-red-700 text-white">{error}</div>
+        <button onClick={refetch}>Update</button>
+      </>
+    );
 
   return (
     <>
-      {isLoading && <div>Loading</div>}
-
-      {error && (
-        <>
-          <div className="bg-red-700 text-white">{error}</div>
-          <button onClick={loadBooks}>Update</button>
-        </>
-      )}
-
-      {!isLoading && !error && (
-        <>
-          <SearchQuery query={query} onChange={setQuery} />{" "}
-          <Books query={query} books={books} />
-        </>
-      )}
+      <SearchQuery query={query} onChange={setQuery} />{" "}
+      <Books query={query} books={books} />
     </>
   );
 }
