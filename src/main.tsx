@@ -8,7 +8,7 @@ import {
   RouterProvider,
 } from "react-router";
 
-import { Program } from "./app.tsx";
+import { MainPage } from "./main-page.tsx";
 import { ConfigProvider, theme } from "antd";
 import { BookView } from "./book-view.tsx";
 
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Program />,
+        element: <MainPage />,
       },
       {
         path: "/book/:bookId",
@@ -40,11 +40,13 @@ const router = createBrowserRouter([
 function Layout() {
   return (
     <>
-      <div className="bg-neutral-700 w-screen h-screen">
-        <div className="p-12">
-          <Outlet />
+      <body className="bg-neutral-700 ">
+        <div className="">
+          <div className="p-12">
+            <Outlet />
+          </div>
         </div>
-      </div>
+      </body>
     </>
   );
 }

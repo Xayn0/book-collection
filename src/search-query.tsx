@@ -11,7 +11,7 @@ export function SearchQuery({ query, onChange }: Props) {
     <div className="w-64 h-11 m-auto mt-8 mb-8">
       <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
         <Input
-          className="text-green-400 w-full" // Fixed width (w-3 was too small)
+          className="text-green-400 w-full" 
           size="middle"
           placeholder="Search books..."
           value={query.name}

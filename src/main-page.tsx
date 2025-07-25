@@ -8,27 +8,35 @@ import {
   Flex,
   Grid,
   Input,
+  Result,
   theme,
 } from "antd";
 import { Books } from "./books";
 import { SearchQuery } from "./search-query";
 import { useBooks } from "./use-books";
+import { ErrorView } from "./error-view";
+import { LoadingView } from "./loading-page";
 
-export function Program() {
+export function MainPage() {
   const { books, error, isLoading, refetch } = useBooks();
   const [query, setQuery] = useState<SearchTerm>({
     name: "",
     genre: "",
   });
 
-  if (isLoading) return <div>Loading</div>;
+  if ("isLoading") return <LoadingView />;
 
   if (error)
     return (
-      <>
-        <div className="bg-red-700 text-white">{error}</div>
-        <button onClick={refetch}>Update</button>
-      </>
+      <ErrorView
+        extra={
+          <Button type="primary" onClick={refetch}>
+            Retry
+          </Button>
+        }
+        type="somthim"
+        message="Nothing for now"
+      />
     );
 
   return (

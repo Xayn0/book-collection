@@ -1,1 +1,46 @@
 @import "tailwindcss";
+
+.flicker {
+  margin: auto;
+  margin-top: 180px;
+  width: 35px;
+  height: 35px;
+
+  background-color: rgb(89, 14, 187);
+  border-radius: 50%;
+  color: white;
+
+  animation: flicker 1s infinite alternate; /* Applies the flicker animation */
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+    background-color: 0 0 10px rgba(89, 14, 187, 0.7);
+  }
+  20% {
+    opacity: 0.8;
+    background-color: 0 0 5px rgba(89, 14, 187, 0.5);
+  }
+  40% {
+    opacity: 1;
+    background-color: 0 0 10px rgba(89, 14, 187, 0.7);
+  }
+  60% {
+    opacity: 0.7;
+    background-color: 0 0 3px rgba(89, 14, 187, 0.3);
+  }
+  80% {
+    opacity: 1;
+    background-color: 0 0 10px rgba(89, 14, 187, 0.7);
+  }
+  100% {
+    opacity: 0.9;
+    background-color: 0 0 7px rgba(89, 14, 187, 0.6);
+  }
+}
+.loading-text {
+  text-align: center;
+  font-size: 1.6em;
+  color: white;
+}
