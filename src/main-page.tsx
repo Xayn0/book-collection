@@ -34,8 +34,8 @@ export function MainPage() {
             Retry
           </Button>
         }
-        type="somthim"
-        message="Nothing for now"
+        type={error}
+        message={error}
       />
     );
 
