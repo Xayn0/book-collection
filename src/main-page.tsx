@@ -24,7 +24,7 @@ export function MainPage() {
     genre: "",
   });
 
-  if ("isLoading") return <LoadingView />;
+  if (isLoading) return <LoadingView />;
 
   if (error)
     return (

@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 
-export function LoadingView() {
-  const [remainingTime, setRemainingTime] = useState(2); // 1
+function useRemainingTime() {
+  const [remainingTime, setRemainingTime] = useState(2);
 
   useEffect(() => {
     setInterval(() => {
-      console.log("cb is called", remainingTime);
-      setRemainingTime(Math.max(remainingTime - 1, 0));
+      setRemainingTime((prev) => Math.max(prev - 1, 0));
     }, 1000);
   }, []);
+
+  return remainingTime;
+}
+
+export function LoadingView() {
+  const remainingTime = useRemainingTime();
 
   return (
     <>
