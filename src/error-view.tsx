@@ -9,18 +9,12 @@ type ErrorProps = {
 
 export function ErrorView(props: ErrorProps) {
   return (
-    <ConfigProvider
-      theme={{
-        algorithm: theme.darkAlgorithm,
-      }}
-    >
-      <div>
-        <Result
-          status="warning"
-          title={`Oops... Looks like there was a ${props.type}`}
-          extra={props.extra}
-        />
-      </div>
-    </ConfigProvider>
+    <div>
+      <Result
+        status="warning"
+        title={`Oops... Looks like there was a ${props.type}`}
+        extra={props.extra}
+      />
+    </div>
   );
 }

@@ -9,15 +9,13 @@ type Props = {
 export function SearchQuery({ query, onChange }: Props) {
   return (
     <div className="w-64 h-11 m-auto mt-8 mb-8">
-      <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
-        <Input
-          className="text-green-400 w-full" 
-          size="middle"
-          placeholder="Search books..."
-          value={query.name}
-          onChange={(e) => onChange({ ...query, name: e.target.value })}
-        />
-      </ConfigProvider>
+      <Input
+        className="text-green-400 w-full"
+        size="middle"
+        placeholder="Search books..."
+        value={query.name}
+        onChange={(e) => onChange({ ...query, name: e.target.value })}
+      />
     </div>
   );
 }

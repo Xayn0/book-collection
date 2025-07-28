@@ -7,17 +7,10 @@ import { LoadingView } from "./loading-page";
 import { ErrorView } from "./error-view";
 import { Button } from "antd";
 import { Page404 } from "./page-404";
+import { BookView } from "./one-book";
 
-export function BookView() {
+export function BookPage() {
   const { bookId } = useParams<{ bookId: string }>();
-  // const [book, setBook] = useState<Book | null>();
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (isNaN(Number(bookId)) || !bookId) return;
-
-  //   api.getBookById(bookId).then(setBook);
-  // }, [bookId]);
 
   const { isLoading, error, book, refetch } = useBook(bookId);
 
@@ -27,7 +20,7 @@ export function BookView() {
 
   if (isLoading) return <LoadingView />;
 
-  if (error)
+  if (error || !book)
     return (
       <ErrorView
         extra={
@@ -40,11 +33,7 @@ export function BookView() {
       />
     );
 
-  return (
-    <>
-      <pre>{JSON.stringify(book, null, 2)}</pre>
-    </>
-  );
+  return <BookView book={book} />;
 }
 function useBook(bookId: string | undefined) {
   const [book, setBook] = useState<Book | null>();

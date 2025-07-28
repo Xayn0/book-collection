@@ -10,11 +10,15 @@ import {
 
 import { MainPage } from "./main-page.tsx";
 import { ConfigProvider, theme } from "antd";
-import { BookView } from "./book-view.tsx";
-
-// address = 'localhost:3000/a/1'
-// "/a/:x1" => <A />
-// "/b/:x2" => <B />
+import { BookPage } from "./book-view.tsx";
+import axios from "axios";
+import {
+  createContext,
+  useContext,
+  useState,
+  type PropsWithChildren,
+  type ReactNode,
+} from "react";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/book/:bookId",
-        element: <BookView />,
+        element: <BookPage />,
       },
       {
         path: "/read",
@@ -51,6 +55,77 @@ function Layout() {
   );
 }
 
+const ThemeContext = createContext<ThemeContext>(null as any);
+
 createRoot(document.getElementById("root")!).render(
-  <RouterProvider router={router} />
+  <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
+    <ContextProvider>
+      {/* <Page /> */}
+      <RouterProvider router={router} />
+    </ContextProvider>
+  </ConfigProvider>
 );
+
+type Theme = "dark" | "light";
+
+type ThemeContext = {
+  theme: Theme;
+  isDark: boolean;
+  isLight: boolean;
+
+  setLight: () => void;
+  setTheme: (theme: Theme) => void;
+  setDark: () => void;
+  setDefault: () => void;
+  toggle: () => void;
+};
+
+const defaultTheme: Theme = "dark";
+
+function ContextProvider(props: PropsWithChildren) {
+  const [theme, setTheme] = useState<Theme>(defaultTheme);
+
+  return (
+    <ThemeContext
+      value={{
+        theme,
+        setTheme,
+        setLight: () => setTheme("light"),
+        toggle: () => (theme === "dark" ? setTheme("light") : setTheme("dark")),
+        setDark: () => setTheme("dark"),
+        setDefault: () => setTheme(defaultTheme),
+        isDark: theme === "dark",
+        isLight: theme === "light",
+      }}
+    >
+      {props.children}
+    </ThemeContext>
+  );
+}
+
+function useThemeContext() {
+  return useContext(ThemeContext);
+}
+
+function Page() {
+  const { toggle } = useThemeContext();
+
+  return (
+    <>
+      <Button onClick={toggle}>Change Theme</Button>
+    </>
+  );
+}
+
+function Button(props: PropsWithChildren<{ onClick: () => void }>) {
+  const { isDark } = useThemeContext();
+
+  return (
+    <button
+      style={{ background: isDark ? "#333" : "#ccc" }}
+      onClick={props.onClick}
+    >
+      {props.children}
+    </button>
+  );
+}
