@@ -9,8 +9,8 @@ import {
 } from "react-router";
 
 import { MainPage } from "./main-page.tsx";
-import { ConfigProvider, theme } from "antd";
-import { BookPage } from "./book-view.tsx";
+import { App, ConfigProvider, theme } from "antd";
+import { BookPage } from "./book-page.tsx";
 import axios from "axios";
 import {
   createContext,
@@ -19,6 +19,7 @@ import {
   type PropsWithChildren,
   type ReactNode,
 } from "react";
+import { ContextProvider } from "./context-provider.tsx";
 
 const router = createBrowserRouter([
   {
@@ -44,88 +45,27 @@ const router = createBrowserRouter([
 function Layout() {
   return (
     <>
-      <body className="bg-neutral-700 ">
+      <div className="bg-neutral-800 w-full h-3000">
         <div className="">
           <div className="p-12">
             <Outlet />
           </div>
         </div>
-      </body>
+      </div>
     </>
   );
 }
 
-const ThemeContext = createContext<ThemeContext>(null as any);
+// 1) spilt to files
+// 2) create "Create" form
+// 3) use "faker" lib
+//
 
 createRoot(document.getElementById("root")!).render(
   <ConfigProvider theme={{ algorithm: theme.darkAlgorithm }}>
-    <ContextProvider>
-      {/* <Page /> */}
-      <RouterProvider router={router} />
-    </ContextProvider>
+    {/* <ContextProvider> */}
+
+    <RouterProvider router={router} />
+    {/* </ContextProvider> */}
   </ConfigProvider>
 );
-
-type Theme = "dark" | "light";
-
-type ThemeContext = {
-  theme: Theme;
-  isDark: boolean;
-  isLight: boolean;
-
-  setLight: () => void;
-  setTheme: (theme: Theme) => void;
-  setDark: () => void;
-  setDefault: () => void;
-  toggle: () => void;
-};
-
-const defaultTheme: Theme = "dark";
-
-function ContextProvider(props: PropsWithChildren) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
-
-  return (
-    <ThemeContext
-      value={{
-        theme,
-        setTheme,
-        setLight: () => setTheme("light"),
-        toggle: () => (theme === "dark" ? setTheme("light") : setTheme("dark")),
-        setDark: () => setTheme("dark"),
-        setDefault: () => setTheme(defaultTheme),
-        isDark: theme === "dark",
-        isLight: theme === "light",
-      }}
-    >
-      {props.children}
-    </ThemeContext>
-  );
-}
-
-function useThemeContext() {
-  return useContext(ThemeContext);
-}
-
-function Page() {
-  const { toggle } = useThemeContext();
-
-  return (
-    <>
-      <Button onClick={toggle}>Change Theme</Button>
-    </>
-  );
-}
-
-function Button(props: PropsWithChildren<{ onClick: () => void }>) {
-  const { isDark } = useThemeContext();
-
-  return (
-    <button
-      style={{ background: isDark ? "#333" : "#ccc" }}
-      onClick={props.onClick}
-    >
-      {props.children}
-    </button>
-  );
-}

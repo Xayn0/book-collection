@@ -1,69 +1,53 @@
-import { Navigate, redirect, useNavigate, useParams } from "react-router";
+import { ConfigProvider, Divider, theme, Typography } from "antd";
 import type { Book } from "./book";
-import { useEffect, useState } from "react";
-import axios, { AxiosError } from "axios";
-import { api } from "./api/api-provider";
-import { LoadingView } from "./loading-page";
-import { ErrorView } from "./error-view";
-import { Button } from "antd";
-import { Page404 } from "./page-404";
-import { BookView } from "./one-book";
 
-export function BookPage() {
-  const { bookId } = useParams<{ bookId: string }>();
+import { useNavigate } from "react-router";
+import { Nav } from "./nav";
 
-  const { isLoading, error, book, refetch } = useBook(bookId);
+const { Paragraph, Title, Link } = Typography;
 
-  if (isNaN(Number(bookId))) {
-    return <Page404 />;
-  }
+type BookViewProps = {
+  book: Book;
+};
 
-  if (isLoading) return <LoadingView />;
+export function BookView(props: BookViewProps) {
+  const navigate = useNavigate();
 
-  if (error || !book)
-    return (
-      <ErrorView
-        extra={
-          <Button type="primary" onClick={refetch}>
-            Retry
-          </Button>
-        }
-        type={error}
-        message={error}
-      />
-    );
+  return (
+    <>
+      <div>
+        <div className="flex justify-between items-center pt-5">
+          <img
+            src={props.book.cover}
+            alt="Photo is Loading"
+            className="w-82 h-110  border-3 rounded-md "
+          />
+          <div className=" w-250 h-100 pr-18">
+            <Typography>
+              <Typography.Title>{props.book.title}</Typography.Title>
 
-  return <BookView book={book} />;
+              <Typography.Paragraph style={{ fontSize: 18 }}>
+                {props.book.description}
+              </Typography.Paragraph>
+
+              <Title level={2}> About the author </Title>
+
+              <Paragraph style={{ fontSize: 17 }}>{lorem3}</Paragraph>
+
+              <button
+                onClick={() => navigate(Nav.base)}
+                className="text-gray-900 bg-white border border-gray-500 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-md cursor-pointer text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-900 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              >
+                Press to exit...
+              </button>
+
+              <Divider />
+            </Typography>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
-function useBook(bookId: string | undefined) {
-  const [book, setBook] = useState<Book | null>();
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-
-  function loadBook() {
-    if (isNaN(Number(bookId)) || !bookId) return;
-    setError("");
-    setIsLoading(true);
-
-    api
-      .getBookById(bookId)
-      .then(setBook)
-      .catch((e: AxiosError) => {
-        setError(e.message);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }
-
-  useEffect(() => {
-    loadBook();
-  }, [bookId]);
-
-  return {
-    isLoading,
-    error,
-    book,
-    refetch: loadBook,
-  };
-}
+const lorem3 =
+  "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam id, minus corrupti atque sed nisi optio perspiciatis incidunt distinctio inventore earum debitis. Ex dignissimos dolore necessitatibus. Deleniti aut modi facilis!In dignissimos maxime natus. Ducimus, illum culpa tempore tempora nemo accusamus fugiat iusto distinctio incidunt officia cum eos modi ullam, perferendis nisi harum pariatur magnam vitae doloribus quod voluptates autem.Odio, impedit! Fugiat quas debitis sit excepturi laborum voluptatum distinctio dolorem expedita consequuntur maxime vel nesciunt, nam doloribus placeat, a unde assumenda. Optio nostrum nihil nesciunt suscipit nemo at aspernatur?";

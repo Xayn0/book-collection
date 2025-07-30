@@ -1,0 +1,25 @@
+1) Make Create New Book Form
+2) Learn What Context is
+3) Checkout faker (done , didn't like it)
+4) filter array itself not just render
+5) learn tailwind ui components
+6) split into css modules
+
+Questions :
+1) Performance sucks for 100 books
+2) on Click , the id page is scrolled down as much as books main page
+3) was searchterm type a bad idea? because we could have title search, genre search and author search seoeratley,
+ and then render all conditionally, instead of merging into types which seems a bit difficult
+4) 
+
+
+
+
+
+
+
+
+
+
+
+---------------------------

@@ -1,7 +1,7 @@
 import { Avatar, Card, ConfigProvider, theme } from "antd";
 import type { SearchTerm } from "./search-term";
 import type { Book } from "./book";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 type BookProps = {
   query: SearchTerm;
@@ -24,25 +24,51 @@ export function Books(props: BookProps) {
         .filter((book) =>
           book.title.toLowerCase().includes(props.query.name.toLowerCase())
         )
+        .filter((book) =>
+          book.genre
+            .toLocaleLowerCase()
+            .includes(props.query.genre.toLocaleLowerCase())
+        )
 
         .map((book) => {
           return (
-            <Card
-              onClick={() => navigate(`/book/${book.id}`)}
-              style={{ width: 220, height: 200, cursor: "pointer" }}
-              cover={
-                <img
-                  src={book.cover}
-                  style={{ width: 220, height: 100, objectFit: "cover" }}
+            <Link to={`/book/${book.id}`}>
+              <Card
+                style={{
+                  width: 260,
+                  height: 300,
+                  cursor: "pointer",
+                  borderRadius: "8px",
+                  fontSize: "16px",
+                }}
+                cover={
+                  <img
+                    src={book.cover}
+                    style={{
+                      width: 260,
+                      height: 150,
+                      objectFit: "cover",
+                      borderBottom: "solid 1px #333",
+                      marginBottom: 14,
+                      padding: 2,
+                    }}
+                  />
+                }
+              >
+                <Card.Meta
+                  avatar={
+                    <Avatar
+                      src={book.author.image}
+                      style={{ width: 45, height: 45 }}
+                    />
+                  }
+                  title={book.title}
+                  description={
+                    book.author.firstName + " " + book.author.lastName
+                  }
                 />
-              }
-            >
-              <Card.Meta
-                avatar={<Avatar src={book.author.image} />}
-                title={book.title}
-                description={book.author.firstName + " " + book.author.lastName}
-              />
-            </Card>
+              </Card>
+            </Link>
           );
         })}
     </div>

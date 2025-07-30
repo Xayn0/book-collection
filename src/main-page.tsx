@@ -16,6 +16,7 @@ import { SearchQuery } from "./search-query";
 import { useBooks } from "./use-books";
 import { ErrorView } from "./error-view";
 import { LoadingView } from "./loading-page";
+import { NavBar } from "./nav-bar";
 
 export function MainPage() {
   const { books, error, isLoading, refetch } = useBooks();
@@ -41,7 +42,7 @@ export function MainPage() {
 
   return (
     <>
-      <SearchQuery query={query} onChange={setQuery} />{" "}
+      <NavBar term={query} onChange={setQuery} />
       <Books query={query} books={books} />
     </>
   );
