@@ -11,7 +11,7 @@ import {
   Result,
   theme,
 } from "antd";
-import { Books } from "./books";
+import { Books } from "./books/books";
 import { SearchQuery } from "./search-query";
 import { useBooks } from "./use-books";
 import { ErrorView } from "./error-view";

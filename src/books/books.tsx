@@ -1,7 +1,8 @@
 import { Avatar, Card, ConfigProvider, theme } from "antd";
-import type { SearchTerm } from "./search-term";
-import type { Book } from "./book";
+import type { SearchTerm } from "../search-term";
+import type { Book } from "../book";
 import { Link, useNavigate } from "react-router";
+import css from "./books.module.css";
 
 type BookProps = {
   query: SearchTerm;
@@ -9,17 +10,8 @@ type BookProps = {
 };
 
 export function Books(props: BookProps) {
-  const navigate = useNavigate();
-
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr",
-        gap: 12,
-        fontSize: 10,
-      }}
-    >
+    <div className={css.root}>
       {props.books
         .filter((book) =>
           book.title.toLowerCase().includes(props.query.name.toLowerCase())
@@ -32,25 +24,28 @@ export function Books(props: BookProps) {
 
         .map((book) => {
           return (
-            <Link to={`/book/${book.id}`}>
+            <Link
+              to={`/book/${book.id}`}
+              style={{
+                overflow: "auto",
+              }}
+            >
               <Card
                 style={{
-                  width: 260,
-                  height: 300,
                   cursor: "pointer",
-                  borderRadius: "8px",
-                  fontSize: "16px",
+                  borderRadius: 8,
+                  fontSize: 16,
+                  height: "100%",
                 }}
                 cover={
                   <img
                     src={book.cover}
                     style={{
-                      width: 260,
-                      height: 150,
                       objectFit: "cover",
                       borderBottom: "solid 1px #333",
                       marginBottom: 14,
                       padding: 2,
+                      height: 300,
                     }}
                   />
                 }

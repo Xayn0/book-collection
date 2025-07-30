@@ -45,11 +45,15 @@ const router = createBrowserRouter([
 function Layout() {
   return (
     <>
-      <div className="bg-neutral-800 w-full h-3000">
-        <div className="">
-          <div className="p-12">
-            <Outlet />
-          </div>
+      {/* Todo: Make padding smaller on smaller screens */}
+      <div className="bg-neutral-800 w-full h-3000 max-[600px]:p-4 p-12">
+        <div
+          style={{
+            maxWidth: 1400,
+            margin: "0 auto",
+          }}
+        >
+          <Outlet />
         </div>
       </div>
     </>
