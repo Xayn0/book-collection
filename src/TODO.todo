@@ -13,6 +13,7 @@ Questions :
 2) why are some antd components so hard
 3) changed the z-index to z-10 cause it ain't reliable
 4) I think it's ok to make an add book page?
+5) I think I discovered a bug in the Opera browser, it prompts you password memorization even when not logged in using password.
 
 
 
