@@ -21,7 +21,7 @@ import { NavBar } from "./nav-bar";
 export function MainPage() {
   const { books, error, isLoading, refetch } = useBooks();
   const [query, setQuery] = useState<SearchTerm>({
-    name: "",
+    name: "people",
     genre: "",
   });
 

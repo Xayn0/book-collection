@@ -2,18 +2,17 @@
 2) Learn What Context is
 3) Checkout faker (done , didn't like it)
 4) filter array itself not just render
-5) learn tailwind ui components
+5) learn tailwind ui components 
 6) split into css modules
+7) learn useForm()
+
+reducers , 
 
 Questions :
-1) Performance sucks for 100 books
-2) on Click , the id page is scrolled down as much as books main page
-3) was searchterm type a bad idea? because we could have title search, genre search and author search seoeratley,
- and then render all conditionally, instead of merging into types which seems a bit difficult
-4) 
-
-
-
+1) why the hell do we have a book folder?
+2) why are some antd components so hard
+3) changed the z-index to z-10 cause it ain't reliable
+4) I think it's ok to make an add book page?
 
 
 
