@@ -5,6 +5,15 @@ body {
   color: white;
 }
 
+.text:hover {
+  background: #000;
+}
+
+.box:hover {
+  background: #000;
+}
+
+
 .flicker {
   margin: auto;
   margin-top: 180px;
