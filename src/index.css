@@ -6,11 +6,11 @@ body {
 }
 
 .text:hover {
-  background: #000;
+  background: red;
 }
 
 .box:hover {
-  background: #000;
+  background: red;
 }
 
 
