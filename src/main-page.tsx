@@ -18,6 +18,8 @@ import { ErrorView } from "./error-view";
 import { LoadingView } from "./loading-page";
 import { NavBar } from "./nav-bar";
 
+// input
+
 export function MainPage() {
   const { books, error, isLoading, refetch } = useBooks();
   const [query, setQuery] = useState<SearchTerm>({
