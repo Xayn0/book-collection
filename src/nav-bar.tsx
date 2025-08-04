@@ -9,6 +9,7 @@ type NavProps = {
 };
 
 export function NavBar(props: NavProps) {
+  //
   return (
     <>
       <div className="flex justify-between mb-15 ">
