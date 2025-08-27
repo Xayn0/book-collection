@@ -1,18 +1,13 @@
 import { useState } from "react";
 import type { SearchTerm } from "./search-term";
 import {
-  Avatar,
+  
   Button,
-  Card,
-  ConfigProvider,
-  Flex,
-  Grid,
-  Input,
-  Result,
-  theme,
+
+  
 } from "antd";
 import { Books } from "./books/books";
-import { SearchQuery } from "./search-query";
+
 import { useBooks } from "./use-books";
 import { ErrorView } from "./error-view";
 import { LoadingView } from "./loading-page";

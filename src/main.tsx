@@ -19,7 +19,6 @@ import {
   type PropsWithChildren,
   type ReactNode,
 } from "react";
-import { ContextProvider } from "./context-provider.tsx";
 
 const router = createBrowserRouter([
   {
