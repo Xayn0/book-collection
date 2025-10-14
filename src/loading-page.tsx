@@ -19,7 +19,7 @@ export function LoadingView() {
     <>
       <div className="flicker"></div>
       <br />
-      <p className="loading-text">Loading...</p>
+      <p className="loading-text">Loading Now...</p>
 
       <br />
       <p className="text-white text-center text-2xl">
