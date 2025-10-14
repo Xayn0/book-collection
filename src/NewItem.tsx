@@ -1,9 +1,8 @@
 import { PlusOutlined } from "@ant-design/icons";
 
-
 import { useState } from "react";
 
-export function NewItem() {
+export function CreateNewButton() {
   const [formVisibility, setFormVisibility] = useState(false);
 
   return (

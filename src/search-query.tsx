@@ -17,7 +17,7 @@ export function SearchQuery({ query, onChange }: Props) {
         size="large"
         placeholder="Search books..."
         value={query.name}
-        onChange={(e) => onChange({ ...query, name: e.target.value })}
+        onChange={(e) => onChange({ ...query, name: e.target.value, })}
       />
       <Dropdown
         placeholder="Genre"
@@ -27,16 +27,7 @@ export function SearchQuery({ query, onChange }: Props) {
         }
         value={query.genre}
       />
-      {/* <select
-        onChange={(e) => {
-          const value = e.target.value;
-          onChange({ ...query, genre: value === "none" ? "" : value });
-        }}
-      >
-        {genres.map((x) => (
-          <option value={x}>Genre: {x}</option>
-        ))}
-      </select> */}
+      
     </div>
   );
 }
