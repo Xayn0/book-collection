@@ -1,4 +1,4 @@
-import { Button, ConfigProvider, Result, theme } from "antd";
+import { Result } from "antd";
 import type { ReactNode } from "react";
 
 type ErrorProps = {
