@@ -4,21 +4,13 @@ import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
   Outlet,
-  Router,
   RouterProvider,
 } from "react-router";
 
 import { MainPage } from "./main-page.tsx";
-import { App, ConfigProvider, theme } from "antd";
+import { ConfigProvider, theme } from "antd";
 import { BookPage } from "./book-page.tsx";
-import axios from "axios";
-import {
-  createContext,
-  useContext,
-  useState,
-  type PropsWithChildren,
-  type ReactNode,
-} from "react";
+
 
 const router = createBrowserRouter([
   {
@@ -41,7 +33,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-function Layout() {
+export function Layout() {
   return (
     <>
       {/* Todo: Make padding smaller on smaller screens */}

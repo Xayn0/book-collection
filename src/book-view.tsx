@@ -1,10 +1,10 @@
-import { ConfigProvider, Divider, theme, Typography } from "antd";
+import { Divider, Typography } from "antd";
 import type { Book } from "./book";
 
 import { useNavigate } from "react-router";
 import { Nav } from "./nav";
 
-const { Paragraph, Title, Link } = Typography;
+const { Paragraph, Title } = Typography;
 
 type BookViewProps = {
   book: Book;

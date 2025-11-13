@@ -1,4 +1,4 @@
-import { ConfigProvider, Input, theme } from "antd";
+import { Input } from "antd";
 import type { SearchTerm } from "./search-term";
 import { Dropdown } from "./ui/dropdown/dropdown";
 

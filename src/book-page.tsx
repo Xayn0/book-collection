@@ -1,7 +1,7 @@
-import { Navigate, redirect, useNavigate, useParams } from "react-router";
+import { useParams } from "react-router";
 import type { Book } from "./book";
 import { useEffect, useState } from "react";
-import axios, { AxiosError } from "axios";
+import  { AxiosError } from "axios";
 import { api } from "./api/api-provider";
 import { LoadingView } from "./loading-page";
 import { ErrorView } from "./error-view";

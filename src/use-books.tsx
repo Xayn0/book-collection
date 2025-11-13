@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { Book } from "./book";
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 import { api } from "./api/api-provider";
 
 export function useBooks() {

@@ -1,7 +1,7 @@
-import { Avatar, Card, ConfigProvider, theme } from "antd";
+import { Avatar, Card } from "antd";
 import type { SearchTerm } from "../search-term";
 import type { Book } from "../book";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import css from "./books.module.css";
 
 type BookProps = {
