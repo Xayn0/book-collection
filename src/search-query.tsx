@@ -7,7 +7,23 @@ type Props = {
   onChange: (query: SearchTerm) => void;
 };
 
-const genres = ["none", "classic", "fantasy", "crime"];
+const genres = [
+  "none",
+  "classic",
+  "fantasy",
+  "crime",
+  "thriller",
+  "non-fiction",
+  "science fiction",
+  "biography",
+  "history",
+  "romance",
+  "young adult",
+  "mystery",
+  "self-help",
+  "horror",
+  "adventure",
+];
 
 export function SearchQuery({ query, onChange }: Props) {
   return (
@@ -17,7 +33,7 @@ export function SearchQuery({ query, onChange }: Props) {
         size="large"
         placeholder="Search books..."
         value={query.name}
-        onChange={(e) => onChange({ ...query, name: e.target.value, })}
+        onChange={(e) => onChange({ ...query, name: e.target.value })}
       />
       <Dropdown
         placeholder="Genre"
@@ -27,7 +43,6 @@ export function SearchQuery({ query, onChange }: Props) {
         }
         value={query.genre}
       />
-      
     </div>
   );
 }

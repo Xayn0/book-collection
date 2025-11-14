@@ -37,7 +37,7 @@ export function Layout() {
   return (
     <>
       {/* Todo: Make padding smaller on smaller screens */}
-      <div className="bg-neutral-800 w-full h-3000 max-[600px]:p-4 p-12">
+      <div className="bg-neutral-800 w-full max-[600px]:p-4 p-12">
         <div
           style={{
             maxWidth: 1400,
