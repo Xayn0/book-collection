@@ -10,7 +10,7 @@ type Props = {
 const genres = [
   "none",
   "classic",
-  "fantasy",
+  "fan",
   "crime",
   "thriller",
   "non-fiction",
