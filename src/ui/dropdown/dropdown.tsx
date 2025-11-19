@@ -51,7 +51,7 @@ export function Dropdown(props: DropdownProps) {
       >
         {props.options.map((option) => (
           <div
-            className="mb-2 text-2xl  p-1  pl-3 hover:opacity-80 cursor-pointer w-full border-b-1 "
+            className="mb-2 text-2xl  p-1  pl-3 hover:opacity-80 cursor-pointer w-full border-b capitalize "
             onClick={() => {
               props.onChange(option);
               setIsOpen(false);
