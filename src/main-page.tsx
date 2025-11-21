@@ -1,11 +1,6 @@
 import { useState } from "react";
 import type { SearchTerm } from "./search-term";
-import {
-  
-  Button,
-
-  
-} from "antd";
+import { Button } from "antd";
 import { Books } from "./books/books";
 
 import { useBooks } from "./use-books";
@@ -39,8 +34,11 @@ export function MainPage() {
 
   return (
     <>
-      <NavBar term={query} onChange={setQuery} />
-      <Books query={query} books={books} />
+      
+       
+        <NavBar term={query} onChange={setQuery} />
+        <Books query={query} books={books} />
+      
     </>
   );
 }

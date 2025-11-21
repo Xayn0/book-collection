@@ -49,9 +49,9 @@ export function Dropdown(props: DropdownProps) {
   const columnsArray = getOptionsByColumn();
 
   return (
-    <div className="relative text-lg" ref={dropdownRef}>
+    <div className="relative text-lg h-8" ref={dropdownRef}>
       <div
-        className="flex justify-between bg-gray-950 rounded-md pl-3"
+        className="flex justify-between bg-gray-950 rounded-md pl-3 h-full items-center"
         style={{ cursor: "pointer" }}
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -59,7 +59,7 @@ export function Dropdown(props: DropdownProps) {
           {props.value || props.placeholder}
         </div>
 
-        <div className="bg-gray-900 pr-3 pl-3 rounded-r-md text-cyan-700">
+        <div className="bg-gray-900 pr-3 pl-3 rounded-r-md text-cyan-700 h-full flex items-center">
           <div
             style={{ transform: `rotate(${isOpen ? 180 : 0}deg)` }}
             className="duration-200"

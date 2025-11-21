@@ -27,13 +27,14 @@ const genres = [
 
 export function SearchQuery({ query, onChange }: SearchProps) {
   return (
-    <div className="flex w-[60%] justify-around items-center h-12">
+    <div className="flex w-[40%] gap-10 items-center h-12 ">
       <Input
         className="max-w-80"
         size="large"
         placeholder="Search books..."
         value={query.name}
-        onChange={(e) => onChange({ ...query, name: e.target.value })}
+        onChange={(e) => onChange({ ...query, name: e.target.value })
+      }
       />
       <Dropdown
         placeholder="Genre"
