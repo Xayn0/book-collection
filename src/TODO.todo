@@ -1,21 +1,6 @@
-1) Make Create New Book Form
-2) Learn What Context is
-3) Checkout faker (done , didn't like it)
-4) filter array itself not just render
-5) learn tailwind ui components 
-6) split into css modules
-7) learn useForm()
-
-reducers , 
-
-Questions :
-1) why the hell do we have a book folder?
-2) why are some antd components so hard
-3) changed the z-index to z-10 cause it ain't reliable
-4) I think it's ok to make an add book page?
-5) I think I discovered a bug in the Opera browser, it prompts you password memorization even when not logged in using password.
-6) what was the context-provider file for
-
+1) Make the Navigation bar better
+2) make the single book-view page better
+3) add a favourite feature
 
 
 
@@ -23,3 +8,4 @@ Questions :
 
 
 ---------------------------
+--> add responsiveness

@@ -2,7 +2,7 @@ import { Input } from "antd";
 import type { SearchTerm } from "./search-term";
 import { Dropdown } from "./ui/dropdown/dropdown";
 
-type Props = {
+type SearchProps = {
   query: SearchTerm;
   onChange: (query: SearchTerm) => void;
 };
@@ -25,11 +25,11 @@ const genres = [
   "adventure",
 ];
 
-export function SearchQuery({ query, onChange }: Props) {
+export function SearchQuery({ query, onChange }: SearchProps) {
   return (
     <div className="flex w-[60%] justify-around items-center h-12">
       <Input
-        className="max-w-100"
+        className="max-w-80"
         size="large"
         placeholder="Search books..."
         value={query.name}

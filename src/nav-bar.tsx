@@ -1,7 +1,7 @@
 
 import { SearchQuery } from "./search-query";
 import type { SearchTerm } from "./search-term";
-import { CreateNewButton } from "./NewItem";
+
 
 type NavProps = {
   term: SearchTerm;
@@ -13,7 +13,7 @@ export function NavBar(props: NavProps) {
   return (
     <> 
       <div className="flex justify-between mb-15 ">
-        <CreateNewButton />
+        
         <SearchQuery query={props.term} onChange={props.onChange} />
       </div>
     </>
